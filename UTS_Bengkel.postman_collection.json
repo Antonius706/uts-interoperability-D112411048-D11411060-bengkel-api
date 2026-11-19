@@ -1,0 +1,562 @@
+{
+  "info": {
+    "name": "UTS Interoperability - Bengkel API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "1. GET all customers (JSON)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/customers",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2. GET all customers (XML)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/customers",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            }
+          }
+        },
+        {
+          "name": "3. GET customer by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/customers/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "4. POST customer (Basic Auth)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/customers",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Budi Santoso\",\n  \"email\": \"budi@mail.com\",\n  \"phone\": \"081234567890\",\n  \"address\": \"Jl. Merdeka 10\",\n  \"city\": \"Bandung\",\n  \"postal_code\": \"40111\",\n  \"gender\": \"L\",\n  \"birth_date\": \"1995-05-20\",\n  \"occupation\": \"Karyawan\",\n  \"membership\": \"silver\",\n  \"notes\": \"Pelanggan tetap\"\n}"
+            },
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "5. PUT customer (Basic Auth)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/customers/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"membership\": \"gold\",\n  \"phone\": \"089999999999\"\n}"
+            },
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "6. DELETE customer (Basic Auth)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/customers/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers",
+                "1"
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "8. POST customer validasi gagal (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/customers",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"\",\n  \"phone\": \"abc\",\n  \"email\": \"salah\"\n}"
+            },
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "7. POST customer tanpa auth (401)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/customers",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "customers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Budi Santoso\",\n  \"email\": \"budi@mail.com\",\n  \"phone\": \"081234567890\",\n  \"address\": \"Jl. Merdeka 10\",\n  \"city\": \"Bandung\",\n  \"postal_code\": \"40111\",\n  \"gender\": \"L\",\n  \"birth_date\": \"1995-05-20\",\n  \"occupation\": \"Karyawan\",\n  \"membership\": \"silver\",\n  \"notes\": \"Pelanggan tetap\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Repairs",
+      "item": [
+        {
+          "name": "1. GET all repairs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/repairs",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "repairs"
+              ]
+            }
+          }
+        },
+        {
+          "name": "2. GET repairs filter customer_id (JSON)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/repairs?customer_id=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "repairs"
+              ],
+              "query": [
+                {
+                  "key": "customer_id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "3. GET repairs filter customer_id (XML)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/repairs?customer_id=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "repairs"
+              ],
+              "query": [
+                {
+                  "key": "customer_id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "4. GET repair by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/repairs/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "repairs",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "5. POST repair (Basic Auth)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/repairs",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "repairs"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": 1,\n  \"plate_number\": \"D 1234 ABC\",\n  \"vehicle_brand\": \"Honda\",\n  \"vehicle_model\": \"Beat\",\n  \"vehicle_year\": 2020,\n  \"service_type\": \"Ganti oli\",\n  \"complaint\": \"Mesin kasar\",\n  \"mechanic_name\": \"Pak Joko\",\n  \"cost\": 75000,\n  \"status\": \"dikerjakan\",\n  \"repair_date\": \"2026-11-19\"\n}"
+            },
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "6. PUT repair (Basic Auth)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/repairs/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "repairs",
+                "1"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"selesai\",\n  \"cost\": 90000\n}"
+            },
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "7. DELETE repair (Basic Auth)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/repairs/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "repairs",
+                "1"
+              ]
+            },
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "8. POST repair XML response",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/repairs",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "repairs"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": 1,\n  \"plate_number\": \"D 1234 ABC\",\n  \"vehicle_brand\": \"Honda\",\n  \"vehicle_model\": \"Beat\",\n  \"vehicle_year\": 2020,\n  \"service_type\": \"Ganti oli\",\n  \"complaint\": \"Mesin kasar\",\n  \"mechanic_name\": \"Pak Joko\",\n  \"cost\": 75000,\n  \"status\": \"dikerjakan\",\n  \"repair_date\": \"2026-11-19\"\n}"
+            },
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{username}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "username",
+      "value": "admin"
+    },
+    {
+      "key": "password",
+      "value": "bengkel123"
+    }
+  ]
+}

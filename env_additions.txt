@@ -1,0 +1,4 @@
+APP_TIMEZONE=Asia/Jakarta
+DB_DATABASE=uts_interoperability
+API_USERNAME=admin
+API_PASSWORD=bengkel123
